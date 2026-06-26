@@ -1,0 +1,87 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+out/
+target/
+
+# Cache
+.cache/
+.tmp/
+temp/
+*.cache
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Java
+*.class
+*.jar
+*.war
+.gradle/
+
+# C/C++
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+
+# Rust
+target/
+Cargo.lock
+
+# Go
+bin/
+
+# Generated files
+*.generated.*
+generated/
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+
+# Secrets and certificates
+*.pem
+*.key
+*.crt
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3

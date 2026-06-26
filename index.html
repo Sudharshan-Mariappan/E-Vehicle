@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Vehicle Charging Station Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Razorpay Integration -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Google Maps API -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDMk70AU5rqX4rAGfGH68ISp46aEvmqNE&libraries=places,geometry"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-charging-station"></i> E-Vehicle Charging Station Finder</h1>
+            <p>Find the nearest charging station for your electric vehicle</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <input type="text" id="locationInput" placeholder="Enter area, landmark, or current position">
+                    <button id="searchBtn" class="search-btn">
+                        <i class="fas fa-search"></i> Find Local Stations
+                    </button>
+                    <button id="currentLocationBtn" class="search-btn" title="Use Current Location">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                </div>
+
+                <!-- District Filter Section -->
+                <div class="filter-section">
+                    <h3><i class="fas fa-filter"></i> Filter by District & Local Area</h3>
+                    <div class="filter-controls">
+                        <select id="stateFilter" class="filter-select">
+                            <option value="">Select State</option>
+                        </select>
+                        <select id="districtFilter" class="filter-select">
+                            <option value="">Select District</option>
+                        </select>
+                        <input type="text" id="localAreaInput" class="filter-input"
+                            placeholder="Enter local area (e.g., Andheri, Koramangala)">
+                        <button id="smartSearchBtn" class="filter-btn">
+                            <i class="fas fa-search-location"></i> Smart Search
+                        </button>
+                        <button id="clearFilterBtn" class="filter-btn secondary">
+                            <i class="fas fa-times"></i> Clear All
+                        </button>
+                    </div>
+                    <div class="search-suggestions" id="searchSuggestions">
+                        <!-- Dynamic suggestions will appear here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommended Station Card -->
+            <section class="recommended-section">
+                <h2><i class="fas fa-star"></i> Recommended Charging Station Nearby</h2>
+                <div id="recommendedStation" class="station-card recommended">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Alternative Stations -->
+            <section class="alternatives-section">
+                <h2><i class="fas fa-list"></i> Alternative Stations</h2>
+                <div id="alternativeStations" class="stations-grid">
+                    <!-- Alternative stations will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section class="map-section">
+                <h2><i class="fas fa-map-marker-alt"></i> Station Locations</h2>
+                <div id="map" class="map-container">
+                    <!-- Google Maps will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Payment Section -->
+            <section class="payment-section" id="paymentSection" style="display: none;">
+                <h2><i class="fas fa-credit-card"></i> Payment Details</h2>
+                <div class="payment-card">
+                    <div class="payment-summary">
+                        <h3>Charging Session Summary</h3>
+                        <div class="summary-item">
+                            <span>Station:</span>
+                            <span id="paymentStationName">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Duration:</span>
+                            <span id="paymentDuration">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Energy:</span>
+                            <span id="paymentEnergy">-</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total Amount:</span>
+                            <span id="paymentAmount">₹0</span>
+                        </div>
+                    </div>
+                    <div class="payment-options">
+                        <button id="payNowBtn" class="action-btn btn-success">
+                            <i class="fas fa-credit-card"></i> Pay Now (₹)
+                        </button>
+                        <button id="cancelPaymentBtn" class="action-btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for Station Details -->
+        <div id="stationModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <!-- Payment Modal -->
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="paymentModalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
